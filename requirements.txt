@@ -1,0 +1,16 @@
+altgraph==0.17.5
+astroid==4.0.4
+colorama==0.4.6
+dill==0.4.1
+isort==8.0.1
+mccabe==0.7.0
+packaging==26.0
+pefile==2024.8.26
+pip==25.3
+platformdirs==4.10.0
+pyinstaller==6.18.0
+pyinstaller-hooks-contrib==2026.0
+pylint==4.0.6
+pywin32-ctypes==0.2.3
+setuptools==80.10.1
+tomlkit==0.15.0
