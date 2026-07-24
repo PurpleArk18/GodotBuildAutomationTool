@@ -1,5 +1,6 @@
 from pathlib import Path
 from enum import Enum
+import subprocess
 
 SCRIPT_PATH = Path(__file__).resolve().parent
 
@@ -34,3 +35,6 @@ def get_icon_path(name):
 
 def get_filter_string(filter_enum):
     return FILE_FILTERS[filter_enum.value]
+
+def get_module_file():
+    return str(QT_UI_PATH)

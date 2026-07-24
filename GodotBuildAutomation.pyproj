@@ -33,6 +33,7 @@
     <Compile Include="app\view\qt6\dialog.py" />
     <Compile Include="app\view\qt6\actions.py" />
     <Compile Include="app\view\qt6\main_window.py" />
+    <Compile Include="app\view\qt6\modules\compiled\module1_ui.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
@@ -52,6 +53,9 @@
     <Folder Include="app\rsc\icons\icons-shadowless\" />
     <Folder Include="app\rsc\icons\icons\" />
     <Folder Include="app\view\" />
+    <Folder Include="app\view\qt6\modules\" />
+    <Folder Include="app\view\qt6\modules\compiled\" />
+    <Folder Include="app\view\qt6\modules\ui\" />
     <Folder Include="app\view\tkinter\" />
     <Folder Include="app\view\qt6\" />
     <Folder Include="tests\" />

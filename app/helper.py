@@ -15,20 +15,19 @@ class Helper:
     def launch(self):
         self.args["frontend"] = self.window.frontendComboBox.currentText()
         self.currentProcess = subprocess.Popen([sys.executable, "app/main.py"])
-        # main.main(self.args)
     
     def open_qt_designer(self):
-        subprocess.run("pyside6-designer")
+        subprocess.Popen("pyside6-designer")
         
     def recompile(self):
-        if (self.currentProcess):
+        if (self.currentProcess != None):
             self.currentProcess.terminate()
-        subprocess.run(["pyside6-uic" "app/view/qt6/modules/ui/module1.ui" "-o" "app/view/qt6/modules/compiled/module1_ui.py"])
+        subprocess.run(["pyside6-uic", "app/view/qt6/modules/ui/module1.ui", "-o", "app/view/qt6/modules/compiled/module1_ui.py"])
         self.launch()
 
 
     def recompile_helper(self):
-        subprocess.run(["pyside6-uic" "app/helper.ui" "-o" "app/helper_ui.py"])
+        subprocess.run(["pyside6-uic", "app/helper.ui", "-o", "app/helper_ui.py"])
 
     def __init__(self):
         loader = QUiLoader()

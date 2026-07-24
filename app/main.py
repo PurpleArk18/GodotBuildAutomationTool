@@ -10,8 +10,8 @@ loader = QUiLoader()
 def run_qt():
     # Qt6 app
     app = QApplication()
-    # window = MainWindow()
-    window = loader.load(utils.QT_UI_PATH, None)
+    window = MainWindow()
+    #window = loader.load(utils.QT_UI_PATH, None)
     window.show()
     app.exec()
 
