@@ -24,6 +24,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="app\controller\controller.py" />
     <Compile Include="app\helper.py" />
     <Compile Include="app\helper_ui.py" />
     <Compile Include="app\helper_window.py" />
@@ -33,11 +34,14 @@
     <Compile Include="app\view\qt6\dialog.py" />
     <Compile Include="app\view\qt6\actions.py" />
     <Compile Include="app\view\qt6\main_window.py" />
+    <Compile Include="app\view\qt6\modules\compiled\main_ui.py" />
+    <Compile Include="app\view\qt6\modules\compiled\module1.py" />
     <Compile Include="app\view\qt6\modules\compiled\module1_ui.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
     <Folder Include="app\model\" />
+    <Folder Include="app\controller\" />
     <Folder Include="app\rsc\" />
     <Folder Include="app\rsc\icons\" />
     <Folder Include="app\rsc\icons\bonus\" />

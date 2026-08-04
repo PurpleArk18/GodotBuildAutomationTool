@@ -4,14 +4,15 @@ from PySide6.QtWidgets import QApplication
 from tkinter import Tk
 from view.qt6.main_window import MainWindow
 from PySide6.QtUiTools import QUiLoader
+from controller.controller import Controller
 
 loader = QUiLoader()
 
 def run_qt():
     # Qt6 app
     app = QApplication()
-    window = MainWindow()
-    #window = loader.load(utils.QT_UI_PATH, None)
+    controller = Controller()
+    window = MainWindow(controller)
     window.show()
     app.exec()
 

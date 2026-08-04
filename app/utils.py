@@ -15,6 +15,7 @@ FILE_FILTERS = [
     "Portable Network Graphics files (*.png)",
     "Text files (*.txt)",
     "Comma Separated Values (*.csv)",
+    "JSON file (*.json)",
     "All files (*.*)",
 ]
 

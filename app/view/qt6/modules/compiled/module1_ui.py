@@ -16,49 +16,47 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QFormLayout, QHBoxLayout,
-    QLabel, QLineEdit, QMainWindow, QMenuBar,
-    QPushButton, QSizePolicy, QStatusBar, QToolBar,
+    QLabel, QLineEdit, QPushButton, QSizePolicy,
     QVBoxLayout, QWidget)
 
-class Ui_module1Main(object):
-    def setupUi(self, module1Main):
-        if not module1Main.objectName():
-            module1Main.setObjectName(u"module1Main")
-        module1Main.resize(663, 376)
-        self.centralwidget = QWidget(module1Main)
-        self.centralwidget.setObjectName(u"centralwidget")
-        self.verticalLayout_2 = QVBoxLayout(self.centralwidget)
+class Ui_module1(object):
+    def setupUi(self, module1):
+        if not module1.objectName():
+            module1.setObjectName(u"module1")
+        module1.resize(400, 300)
+        module1.setMinimumSize(QSize(200, 200))
+        self.verticalLayout_2 = QVBoxLayout(module1)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.formLayout_2 = QFormLayout()
         self.formLayout_2.setObjectName(u"formLayout_2")
-        self.emailLabel = QLabel(self.centralwidget)
+        self.emailLabel = QLabel(module1)
         self.emailLabel.setObjectName(u"emailLabel")
 
         self.formLayout_2.setWidget(1, QFormLayout.ItemRole.LabelRole, self.emailLabel)
 
-        self.emailLineEdit = QLineEdit(self.centralwidget)
+        self.emailLineEdit = QLineEdit(module1)
         self.emailLineEdit.setObjectName(u"emailLineEdit")
 
         self.formLayout_2.setWidget(1, QFormLayout.ItemRole.FieldRole, self.emailLineEdit)
 
-        self.userNameLabel = QLabel(self.centralwidget)
+        self.userNameLabel = QLabel(module1)
         self.userNameLabel.setObjectName(u"userNameLabel")
 
         self.formLayout_2.setWidget(2, QFormLayout.ItemRole.LabelRole, self.userNameLabel)
 
-        self.userNameLineEdit = QLineEdit(self.centralwidget)
+        self.userNameLineEdit = QLineEdit(module1)
         self.userNameLineEdit.setObjectName(u"userNameLineEdit")
 
         self.formLayout_2.setWidget(2, QFormLayout.ItemRole.FieldRole, self.userNameLineEdit)
 
-        self.debugLabel = QLabel(self.centralwidget)
+        self.debugLabel = QLabel(module1)
         self.debugLabel.setObjectName(u"debugLabel")
 
         self.formLayout_2.setWidget(0, QFormLayout.ItemRole.LabelRole, self.debugLabel)
 
-        self.debugCheckBox = QCheckBox(self.centralwidget)
+        self.debugCheckBox = QCheckBox(module1)
         self.debugCheckBox.setObjectName(u"debugCheckBox")
 
         self.formLayout_2.setWidget(0, QFormLayout.ItemRole.FieldRole, self.debugCheckBox)
@@ -71,12 +69,12 @@ class Ui_module1Main(object):
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.checkGitButton = QPushButton(self.centralwidget)
+        self.checkGitButton = QPushButton(module1)
         self.checkGitButton.setObjectName(u"checkGitButton")
 
         self.horizontalLayout_2.addWidget(self.checkGitButton)
 
-        self.configure_git_button = QPushButton(self.centralwidget)
+        self.configure_git_button = QPushButton(module1)
         self.configure_git_button.setObjectName(u"configure_git_button")
 
         self.horizontalLayout_2.addWidget(self.configure_git_button)
@@ -84,30 +82,18 @@ class Ui_module1Main(object):
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
 
-        module1Main.setCentralWidget(self.centralwidget)
-        self.menubar = QMenuBar(module1Main)
-        self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 663, 33))
-        module1Main.setMenuBar(self.menubar)
-        self.statusbar = QStatusBar(module1Main)
-        self.statusbar.setObjectName(u"statusbar")
-        module1Main.setStatusBar(self.statusbar)
-        self.toolBar = QToolBar(module1Main)
-        self.toolBar.setObjectName(u"toolBar")
-        module1Main.addToolBar(Qt.ToolBarArea.TopToolBarArea, self.toolBar)
 
-        self.retranslateUi(module1Main)
+        self.retranslateUi(module1)
 
-        QMetaObject.connectSlotsByName(module1Main)
+        QMetaObject.connectSlotsByName(module1)
     # setupUi
 
-    def retranslateUi(self, module1Main):
-        module1Main.setWindowTitle(QCoreApplication.translate("module1Main", u"MainWindow", None))
-        self.emailLabel.setText(QCoreApplication.translate("module1Main", u"Email", None))
-        self.userNameLabel.setText(QCoreApplication.translate("module1Main", u"User Name", None))
-        self.debugLabel.setText(QCoreApplication.translate("module1Main", u"Debug", None))
-        self.checkGitButton.setText(QCoreApplication.translate("module1Main", u"Check Git", None))
-        self.configure_git_button.setText(QCoreApplication.translate("module1Main", u"Configure Git", None))
-        self.toolBar.setWindowTitle(QCoreApplication.translate("module1Main", u"toolBar", None))
+    def retranslateUi(self, module1):
+        module1.setWindowTitle(QCoreApplication.translate("module1", u"Form", None))
+        self.emailLabel.setText(QCoreApplication.translate("module1", u"Email", None))
+        self.userNameLabel.setText(QCoreApplication.translate("module1", u"User Name", None))
+        self.debugLabel.setText(QCoreApplication.translate("module1", u"Debug", None))
+        self.checkGitButton.setText(QCoreApplication.translate("module1", u"Check Git", None))
+        self.configure_git_button.setText(QCoreApplication.translate("module1", u"Configure Git", None))
     # retranslateUi
 

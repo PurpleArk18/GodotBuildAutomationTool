@@ -22,8 +22,17 @@ class Helper:
     def recompile(self):
         if (self.currentProcess != None):
             self.currentProcess.terminate()
-        subprocess.run(["pyside6-uic", "app/view/qt6/modules/ui/module1.ui", "-o", "app/view/qt6/modules/compiled/module1_ui.py"])
-        self.launch()
+        resource = subprocess.run(["pyside6-rcc", "app/rsc/resources.qrc", "-o", "app/resources_rc.py"])
+        if resource.returncode == 0:
+            self.window.statusbar.showMessage("Resources compiled correctly")
+        main = subprocess.run(["pyside6-uic", "app/view/qt6/modules/ui/main.ui", "-o", "app/view/qt6/modules/compiled/main_ui.py"])
+        if main.returncode == 0:
+            self.window.statusbar.showMessage("Main compiled correctly")
+        module1 = subprocess.run(["pyside6-uic", "app/view/qt6/modules/ui/module1.ui", "-o", "app/view/qt6/modules/compiled/module1_ui.py"])
+        if module1.returncode == 0:
+            self.window.statusbar.showMessage("Module 1 compiled correctly")
+
+        # self.launch()
 
 
     def recompile_helper(self):
@@ -40,7 +49,7 @@ class Helper:
         app.exec()
 
 if __name__ == "__main__":
-    Helper()
+    helper = Helper()
 
 
 
