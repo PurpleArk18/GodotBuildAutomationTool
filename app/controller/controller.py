@@ -9,4 +9,6 @@ class Controller:
         self.statusBar.showMessage(message)
 
     def set_git_configured(self, isConfigured:bool) -> None:
-        pass
+        self.model.set_git_configured(isConfigured)
+        
+    
