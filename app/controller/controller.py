@@ -1,5 +1,6 @@
 from model.model import Model
 from PySide6.QtWidgets import QStatusBar
+
 class Controller:
 
     model:Model = Model()
@@ -11,4 +12,23 @@ class Controller:
     def set_git_configured(self, isConfigured:bool) -> None:
         self.model.set_git_configured(isConfigured)
         
-    
+    def get_git_status(self) -> bool:
+        return self.model.get_git_configured()
+
+    def get_is_debug(self) -> bool:
+        return self.model.get_is_debug()
+
+    def set_debug(self, bIsDebug:bool) -> None:
+        self.model.set_debug(bIsDebug)
+
+    def get_user_name(self) -> str :
+        return self.model.get_user_name()
+
+    def set_user_name(self, userName:str) -> None:
+        self.model.set_user_name(userName)
+
+    def get_email(self) -> str:
+        return self.model.get_email()
+
+    def set_email(self, email:str) -> None:
+        self.model.set_email(email)
