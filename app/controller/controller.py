@@ -1,10 +1,22 @@
+from dataclasses import asdict
 from model.model import Model
 from PySide6.QtWidgets import QStatusBar
+import json
 
 class Controller:
 
     model:Model = Model()
     statusBar:QStatusBar
+    
+    def save(self) -> None:
+        with open("prefs.json", "w", encoding="utf-8") as file:
+            json.dump(asdict(self.model), file, indent=4)
+            
+        
+    def load(self) -> None:
+        with open("prefs.json", "r") as file:
+            data = json.load(file)
+            self.model = Model(**data)
 
     def show_status_message(self, message:str) -> None:
         self.statusBar.showMessage(message)
