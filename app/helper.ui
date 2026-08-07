@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>504</width>
+    <height>375</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>70</x>
       <y>40</y>
       <width>401</width>
-      <height>251</height>
+      <height>254</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -32,16 +32,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="recompile_button">
+      <widget class="QPushButton" name="recompile_helper_button">
        <property name="text">
-        <string>Recompile main</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_4">
-       <property name="text">
-        <string>Recompile helper</string>
+        <string>Recompile Helper</string>
        </property>
       </widget>
      </item>
@@ -89,9 +82,37 @@
       </layout>
      </item>
      <item>
+      <widget class="QPushButton" name="recompile_button">
+       <property name="text">
+        <string>Recompile</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="launch_button">
        <property name="text">
         <string>Launch</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="package_button">
+       <property name="text">
+        <string>Package</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="open_spec_file_button">
+       <property name="text">
+        <string>Open .spec File</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="launc_installforge_button">
+       <property name="text">
+        <string>Launch InstallForge</string>
        </property>
       </widget>
      </item>
@@ -103,7 +124,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>504</width>
      <height>33</height>
     </rect>
    </property>

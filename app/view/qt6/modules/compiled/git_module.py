@@ -1,12 +1,11 @@
 import subprocess
 import webbrowser
 from controller.controller import Controller
-import utils
-from view.qt6.modules.compiled.module1_ui import Ui_gitDataRoot
+from view.qt6.modules.compiled.gitModule_ui import Ui_git_module_root
 from PySide6.QtWidgets import QWidget
 
 
-class Module1(QWidget, Ui_gitDataRoot):
+class GitModule(QWidget, Ui_git_module_root):
    
     def __init__(self, controller:Controller):
         super().__init__()
@@ -50,5 +49,7 @@ class Module1(QWidget, Ui_gitDataRoot):
         self.email_label.setEnabled(enabled)
         self.user_name_label.setEnabled(enabled)
         self.user_name_line_edit.setEnabled(enabled)
+
+
         
         

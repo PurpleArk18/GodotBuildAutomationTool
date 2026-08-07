@@ -4,7 +4,7 @@ import webbrowser
 import utils
 from controller.controller import Controller
 from view.qt6.dialog import CustomDialog
-from view.qt6.modules.compiled.module1 import Module1
+from view.qt6.modules.compiled.git_module import GitModule
 from view.qt6.modules.compiled.main_ui import Ui_MainWindow
 from PySide6.QtCore import QSize
 from PySide6.QtGui import QAction, QIcon
@@ -19,7 +19,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.controller = controller
         controller.statusBar = self.statusbar
-        module1 = Module1(controller)
+        module1 = GitModule(controller)
         self.verticalLayout_2.addWidget(module1)
 
         # self.setWindowTitle("Godot Build Automation in Qt6")

@@ -23,12 +23,12 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(800, 600)
+        MainWindow.resize(504, 375)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayoutWidget = QWidget(self.centralwidget)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(70, 40, 401, 251))
+        self.verticalLayoutWidget.setGeometry(QRect(70, 40, 401, 254))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -37,15 +37,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.open_qtdesigner_button)
 
-        self.recompile_button = QPushButton(self.verticalLayoutWidget)
-        self.recompile_button.setObjectName(u"recompile_button")
+        self.recompile_helper_button = QPushButton(self.verticalLayoutWidget)
+        self.recompile_helper_button.setObjectName(u"recompile_helper_button")
 
-        self.verticalLayout.addWidget(self.recompile_button)
-
-        self.pushButton_4 = QPushButton(self.verticalLayoutWidget)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-
-        self.verticalLayout.addWidget(self.pushButton_4)
+        self.verticalLayout.addWidget(self.recompile_helper_button)
 
         self.formLayout = QFormLayout()
         self.formLayout.setObjectName(u"formLayout")
@@ -68,15 +63,35 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.formLayout)
 
+        self.recompile_button = QPushButton(self.verticalLayoutWidget)
+        self.recompile_button.setObjectName(u"recompile_button")
+
+        self.verticalLayout.addWidget(self.recompile_button)
+
         self.launch_button = QPushButton(self.verticalLayoutWidget)
         self.launch_button.setObjectName(u"launch_button")
 
         self.verticalLayout.addWidget(self.launch_button)
 
+        self.package_button = QPushButton(self.verticalLayoutWidget)
+        self.package_button.setObjectName(u"package_button")
+
+        self.verticalLayout.addWidget(self.package_button)
+
+        self.open_spec_file_button = QPushButton(self.verticalLayoutWidget)
+        self.open_spec_file_button.setObjectName(u"open_spec_file_button")
+
+        self.verticalLayout.addWidget(self.open_spec_file_button)
+
+        self.launc_installforge_button = QPushButton(self.verticalLayoutWidget)
+        self.launc_installforge_button.setObjectName(u"launc_installforge_button")
+
+        self.verticalLayout.addWidget(self.launc_installforge_button)
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 800, 33))
+        self.menubar.setGeometry(QRect(0, 0, 504, 33))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -90,14 +105,17 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.open_qtdesigner_button.setText(QCoreApplication.translate("MainWindow", u"Open Qt Designer", None))
-        self.recompile_button.setText(QCoreApplication.translate("MainWindow", u"Recompile main", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"Recompile helper", None))
+        self.recompile_helper_button.setText(QCoreApplication.translate("MainWindow", u"Recompile Helper", None))
         self.frontendComboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"-qt6", None))
         self.frontendComboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"-tkinter", None))
 
         self.frontendComboBox.setCurrentText("")
         self.frontendComboBox.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Select", None))
         self.frontendLabel.setText(QCoreApplication.translate("MainWindow", u"Frontend", None))
+        self.recompile_button.setText(QCoreApplication.translate("MainWindow", u"Recompile", None))
         self.launch_button.setText(QCoreApplication.translate("MainWindow", u"Launch", None))
+        self.package_button.setText(QCoreApplication.translate("MainWindow", u"Package", None))
+        self.open_spec_file_button.setText(QCoreApplication.translate("MainWindow", u"Open .spec File", None))
+        self.launc_installforge_button.setText(QCoreApplication.translate("MainWindow", u"Launch InstallForge", None))
     # retranslateUi
 
