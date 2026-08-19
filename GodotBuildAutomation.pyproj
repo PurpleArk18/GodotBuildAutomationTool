@@ -34,9 +34,13 @@
     <Compile Include="app\view\qt6\dialog.py" />
     <Compile Include="app\view\qt6\actions.py" />
     <Compile Include="app\view\qt6\main_window.py" />
+    <Compile Include="app\view\qt6\modules\compiled\githubModule_ui.py" />
+    <Compile Include="app\view\qt6\modules\compiled\github_module.py" />
+    <Compile Include="app\view\qt6\modules\compiled\gitModule_ui.py" />
     <Compile Include="app\view\qt6\modules\compiled\main_ui.py" />
-    <Compile Include="app\view\qt6\modules\compiled\module1.py" />
-    <Compile Include="app\view\qt6\modules\compiled\module1_ui.py" />
+    <Compile Include="app\view\qt6\modules\compiled\git_module.py" />
+    <Compile Include="app\view\qt6\modules\compiled\repoModule_ui.py" />
+    <Compile Include="app\view\qt6\modules\compiled\repo_module.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />

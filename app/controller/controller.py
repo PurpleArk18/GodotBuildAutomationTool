@@ -8,11 +8,11 @@ class Controller:
     model:Model = Model()
     statusBar:QStatusBar
     
+    
     def save(self) -> None:
         with open("prefs.json", "w", encoding="utf-8") as file:
             json.dump(asdict(self.model), file, indent=4)
             
-        
     def load(self) -> None:
         with open("prefs.json", "r") as file:
             data = json.load(file)
@@ -44,3 +44,9 @@ class Controller:
 
     def set_email(self, email:str) -> None:
         self.model.set_email(email)
+
+    def set_current_branch(self, newBranch:str) -> None:
+        self.model.set_current_branch(newBranch)
+
+    def get_current_branch(self) -> str:
+        return self.model.get_current_branch()

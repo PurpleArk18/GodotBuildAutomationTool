@@ -5,6 +5,8 @@ import utils
 from controller.controller import Controller
 from view.qt6.dialog import CustomDialog
 from view.qt6.modules.compiled.git_module import GitModule
+from view.qt6.modules.compiled.github_module import GithubModule
+from view.qt6.modules.compiled.repo_module import RepoModule
 from view.qt6.modules.compiled.main_ui import Ui_MainWindow
 from PySide6.QtCore import QSize
 from PySide6.QtGui import QAction, QIcon
@@ -19,8 +21,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.controller = controller
         controller.statusBar = self.statusbar
-        module1 = GitModule(controller)
-        self.verticalLayout_2.addWidget(module1)
+
+        git_module = GitModule(controller)
+        self.verticalLayout_2.addWidget(git_module)
+
+        self.github_module = GithubModule(controller)
+        self.verticalLayout_2.addWidget(self.github_module)
+
+        self.repo_module = RepoModule(controller)
+        self.verticalLayout_2.addWidget(self.repo_module)
 
         # self.setWindowTitle("Godot Build Automation in Qt6")
         # self.setMinimumSize(QSize(650,400))

@@ -6,23 +6,48 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>422</width>
+    <height>144</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QFormLayout" name="formLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="branchesLabel">
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QPushButton" name="check_branches_button">
      <property name="text">
-      <string>Branches</string>
+      <string>Check Branches</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="QComboBox" name="branchesComboBox"/>
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="branchesLabel">
+       <property name="text">
+        <string>Branches</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="select_branch_comboBox"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QPushButton" name="checkout_branch_button">
+     <property name="text">
+      <string>Checkout Branch</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="fork_godot_button">
+     <property name="text">
+      <string>Fork Godot</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

@@ -9,6 +9,7 @@ class Model:
     _userName:str = ""
     _email:str = ""
     _git_is_configured = False
+    _current_branch:str = ""
 
     def get_git_configured(self) -> bool:
         return self._git_is_configured
@@ -33,3 +34,9 @@ class Model:
 
     def set_email(self, email:str) -> None:
         self._email = email
+
+    def set_current_branch(self, newBranch:str) -> None:
+        self.current_branch = newBranch
+
+    def get_current_branch(self) -> str:
+        return self.current_branch

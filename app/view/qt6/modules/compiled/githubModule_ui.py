@@ -15,14 +15,15 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QFormLayout, QLabel,
-    QPushButton, QSizePolicy, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QFormLayout, QFrame,
+    QLabel, QPushButton, QSizePolicy, QVBoxLayout,
+    QWidget)
 
 class Ui_github_module_root(object):
     def setupUi(self, github_module_root):
         if not github_module_root.objectName():
             github_module_root.setObjectName(u"github_module_root")
-        github_module_root.resize(401, 277)
+        github_module_root.resize(409, 128)
         self.verticalLayout = QVBoxLayout(github_module_root)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.formLayout_3 = QFormLayout()
@@ -34,16 +35,6 @@ class Ui_github_module_root(object):
 
         self.formLayout_3.setWidget(0, QFormLayout.ItemRole.LabelRole, self.use_github_label)
 
-        self.check_github_cli_button = QPushButton(github_module_root)
-        self.check_github_cli_button.setObjectName(u"check_github_cli_button")
-
-        self.formLayout_3.setWidget(1, QFormLayout.ItemRole.SpanningRole, self.check_github_cli_button)
-
-        self.install_github_cli_button = QPushButton(github_module_root)
-        self.install_github_cli_button.setObjectName(u"install_github_cli_button")
-
-        self.formLayout_3.setWidget(2, QFormLayout.ItemRole.SpanningRole, self.install_github_cli_button)
-
         self.use_github_checkbox = QCheckBox(github_module_root)
         self.use_github_checkbox.setObjectName(u"use_github_checkbox")
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
@@ -54,8 +45,27 @@ class Ui_github_module_root(object):
 
         self.formLayout_3.setWidget(0, QFormLayout.ItemRole.FieldRole, self.use_github_checkbox)
 
+        self.check_github_cli_button = QPushButton(github_module_root)
+        self.check_github_cli_button.setObjectName(u"check_github_cli_button")
+        self.check_github_cli_button.setEnabled(False)
+
+        self.formLayout_3.setWidget(1, QFormLayout.ItemRole.SpanningRole, self.check_github_cli_button)
+
+        self.install_github_cli_button = QPushButton(github_module_root)
+        self.install_github_cli_button.setObjectName(u"install_github_cli_button")
+        self.install_github_cli_button.setEnabled(False)
+
+        self.formLayout_3.setWidget(2, QFormLayout.ItemRole.SpanningRole, self.install_github_cli_button)
+
 
         self.verticalLayout.addLayout(self.formLayout_3)
+
+        self.line = QFrame(github_module_root)
+        self.line.setObjectName(u"line")
+        self.line.setFrameShape(QFrame.Shape.HLine)
+        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+
+        self.verticalLayout.addWidget(self.line)
 
 
         self.retranslateUi(github_module_root)

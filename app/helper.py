@@ -46,13 +46,14 @@ class Helper:
         subprocess.run(["pyside6-uic", "app/helper.ui", "-o", "app/helper_ui.py"])
 
     def package(self):
-        pass
+        subprocess.run(["pyinstaller", "main.spec"])
 
     def open_spec(self):
-        pass
+        subprocess.run(["notepad", "main.spec"])
 
     def launch_installforge(self):
-        pass
+        path = r"C:\Program Files (x86)\solicus\InstallForge\bin\ifbuilderenvx86.exe"
+        subprocess.Popen([path])
 
     def __init__(self):
         loader = QUiLoader()
