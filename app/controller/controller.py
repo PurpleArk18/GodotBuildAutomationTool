@@ -50,3 +50,9 @@ class Controller:
 
     def get_current_branch(self) -> str:
         return self.model.get_current_branch()
+
+    def get_repo_path(self) -> str:
+        return self.model.get_repo_path()
+
+    def set_repo_path(self, newPath:str) -> None:
+        self.model.set_repo_path(newPath)

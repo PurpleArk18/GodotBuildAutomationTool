@@ -55,6 +55,11 @@ class Ui_repo_module_root(object):
 
         self.verticalLayout.addWidget(self.fork_godot_button)
 
+        self.select_repo_path_button = QPushButton(repo_module_root)
+        self.select_repo_path_button.setObjectName(u"select_repo_path_button")
+
+        self.verticalLayout.addWidget(self.select_repo_path_button)
+
 
         self.retranslateUi(repo_module_root)
 
@@ -67,5 +72,6 @@ class Ui_repo_module_root(object):
         self.branchesLabel.setText(QCoreApplication.translate("repo_module_root", u"Branches", None))
         self.checkout_branch_button.setText(QCoreApplication.translate("repo_module_root", u"Checkout Branch", None))
         self.fork_godot_button.setText(QCoreApplication.translate("repo_module_root", u"Fork Godot", None))
+        self.select_repo_path_button.setText(QCoreApplication.translate("repo_module_root", u"Select Repo Location", None))
     # retranslateUi
 

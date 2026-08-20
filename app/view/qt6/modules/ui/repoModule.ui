@@ -49,6 +49,13 @@
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="QPushButton" name="select_repo_path_button">
+     <property name="text">
+      <string>Select Repo Location</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>
