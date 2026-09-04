@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>build_module_root</class>
+ <widget class="QWidget" name="build_module_root">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,6 +13,36 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QPushButton" name="check_scons_button">
+     <property name="text">
+      <string>Check Scons</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="install_scons_button">
+     <property name="text">
+      <string>Install Scons</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="update_scons_button">
+     <property name="text">
+      <string>PushButton</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="build_button">
+     <property name="text">
+      <string>Build</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

@@ -35,6 +35,8 @@
     <Compile Include="app\view\qt6\dialog.py" />
     <Compile Include="app\view\qt6\actions.py" />
     <Compile Include="app\view\qt6\main_window.py" />
+    <Compile Include="app\view\qt6\modules\compiled\buildModule_ui.py" />
+    <Compile Include="app\view\qt6\modules\compiled\build_module.py" />
     <Compile Include="app\view\qt6\modules\compiled\githubModule_ui.py" />
     <Compile Include="app\view\qt6\modules\compiled\github_module.py" />
     <Compile Include="app\view\qt6\modules\compiled\gitModule_ui.py" />

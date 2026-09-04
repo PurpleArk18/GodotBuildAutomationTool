@@ -41,6 +41,9 @@ class Helper:
         repomodule = subprocess.run(["pyside6-uic", "app/view/qt6/modules/ui/repoModule.ui", "-o", "app/view/qt6/modules/compiled/repoModule_ui.py"])
         if repomodule.returncode == 0:
             self.window.statusbar.showMessage("Repo module compiled correctly")
+        buildmodule = subprocess.run(["pyside6-uic", "app/view/qt6/modules/ui/buildModule.ui", "-o", "app/view/qt6/modules/compiled/buildModule_ui.py"])
+        if buildmodule.returncode == 0:
+            self.window.statusbar.showMessage("Build module compiled correctly")
 
     def recompile_helper(self):
         subprocess.run(["pyside6-uic", "app/helper.ui", "-o", "app/helper_ui.py"])
