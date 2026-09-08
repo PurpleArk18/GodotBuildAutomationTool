@@ -1,0 +1,4 @@
+
+class BaseModule():
+
+    name:str = ""

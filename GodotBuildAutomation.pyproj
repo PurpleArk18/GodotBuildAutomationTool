@@ -32,6 +32,7 @@
     <Compile Include="app\main.py" />
     <Compile Include="app\model\model.py" />
     <Compile Include="app\utils.py" />
+    <Compile Include="app\view\qt6\base_module.py" />
     <Compile Include="app\view\qt6\dialog.py" />
     <Compile Include="app\view\qt6\actions.py" />
     <Compile Include="app\view\qt6\main_window.py" />

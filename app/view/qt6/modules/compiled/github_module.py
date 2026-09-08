@@ -1,10 +1,11 @@
 from controller.controller import Controller
 from view.qt6.modules.compiled.githubModule_ui import Ui_github_module_root
+from view.qt6.base_module import BaseModule
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QWidget
 import subprocess
 
-class GithubModule(QWidget, Ui_github_module_root):
+class GithubModule(QWidget, Ui_github_module_root, BaseModule):
    
     def __init__(self, controller:Controller):
         super().__init__()
@@ -13,6 +14,7 @@ class GithubModule(QWidget, Ui_github_module_root):
         self.check_github_cli_button.clicked.connect(self.check_github)
         self.install_github_cli_button.clicked.connect(self.install_github)
         self.use_github_checkbox.stateChanged.connect(self.use_github_state_changed)
+        self.name = "Github"
 
     def check_github(self) -> None:
         github_status = subprocess.run(["gh", "--version"])
@@ -26,7 +28,7 @@ class GithubModule(QWidget, Ui_github_module_root):
             subprocess.run(["winget", "install", "--id", "GitHub.cli", "--source", "winget"])
 
     def use_github_state_changed(self, newState:Qt.CheckState) -> None:
-        enabled = newState == Qt.CheckState.Checked.value
+        enabled = newState == Qt.CheckState.Checked
         self.check_github_cli_button.setEnabled(enabled)
         self.install_github_cli_button.setEnabled(enabled)
 

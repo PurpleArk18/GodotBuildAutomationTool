@@ -13,6 +13,7 @@ class Model:
     _github_is_configured:bool = False
     _current_branch:str = ""
     _repo_path:str = ""
+    _scons_is_configured:bool = False
 
     def get_is_debug(self) -> bool:
         return self._debug
@@ -24,7 +25,7 @@ class Model:
         return self._git_is_configured
 
     def set_git_configured(self, bIsConfigured:bool) -> None:
-        git_is_configured = bIsConfigured
+        self.git_is_configured = bIsConfigured
 
     def get_user_name(self) -> str :
         return self._userName

@@ -17,8 +17,8 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
 from PySide6.QtWidgets import (QApplication, QMainWindow, QMenu, QMenuBar,
-    QSizePolicy, QStatusBar, QToolBar, QVBoxLayout,
-    QWidget)
+    QSizePolicy, QStatusBar, QTabWidget, QToolBar,
+    QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
@@ -42,6 +42,11 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout_2 = QVBoxLayout(self.centralwidget)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.modules_tabWidget = QTabWidget(self.centralwidget)
+        self.modules_tabWidget.setObjectName(u"modules_tabWidget")
+
+        self.verticalLayout_2.addWidget(self.modules_tabWidget)
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -64,6 +69,9 @@ class Ui_MainWindow(object):
         self.toolBar.addAction(self.actionSave)
 
         self.retranslateUi(MainWindow)
+
+        self.modules_tabWidget.setCurrentIndex(-1)
+
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi

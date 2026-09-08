@@ -1,9 +1,6 @@
 from helper_window import HelperWindow
-import main
-import utils
 import subprocess
 import sys
-from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QApplication
 
 
@@ -41,6 +38,7 @@ class Helper:
         repomodule = subprocess.run(["pyside6-uic", "app/view/qt6/modules/ui/repoModule.ui", "-o", "app/view/qt6/modules/compiled/repoModule_ui.py"])
         if repomodule.returncode == 0:
             self.window.statusbar.showMessage("Repo module compiled correctly")
+
         buildmodule = subprocess.run(["pyside6-uic", "app/view/qt6/modules/ui/buildModule.ui", "-o", "app/view/qt6/modules/compiled/buildModule_ui.py"])
         if buildmodule.returncode == 0:
             self.window.statusbar.showMessage("Build module compiled correctly")
@@ -59,7 +57,6 @@ class Helper:
         subprocess.Popen([path])
 
     def __init__(self):
-        loader = QUiLoader()
         app = QApplication()
         self.window = HelperWindow()
         self.window.launch_button.pressed.connect(self.launch)

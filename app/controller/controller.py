@@ -1,6 +1,6 @@
 from dataclasses import asdict
 from model.model import Model
-from PySide6.QtWidgets import QStatusBar
+from PySide6.QtWidgets import QStatusBar, QMessageBox, QWidget
 import json
 
 class Controller:
@@ -20,6 +20,9 @@ class Controller:
 
     def show_status_message(self, message:str) -> None:
         self.statusBar.showMessage(message)
+
+    def show_message_dialog(self, parent:QWidget, message:str, title:str = "") -> None:
+        QMessageBox.information(parent, title, message)
 
     def set_git_configured(self, isConfigured:bool) -> None:
         self.model.set_git_configured(isConfigured)
