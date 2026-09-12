@@ -4,13 +4,14 @@ from view.qt6.modules.compiled.github_module import GithubModule
 from view.qt6.modules.compiled.repo_module import RepoModule
 from view.qt6.modules.compiled.build_module import BuildModule
 from view.qt6.modules.compiled.main_ui import Ui_MainWindow
+from view.qt6.base_module import BaseModule
 
 from PySide6.QtWidgets import (QMainWindow)
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     
-    modules = []
+    modules:list[BaseModule] = []
 
     def __init__(self, controller:Controller):
         super().__init__()

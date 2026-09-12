@@ -1,10 +1,10 @@
 from controller.controller import Controller
 from view.qt6.modules.compiled.repoModule_ui import Ui_repo_module_root
 from view.qt6.base_module import BaseModule
-from PySide6.QtWidgets import QWidget, QFileDialog
+from PySide6.QtWidgets import QFileDialog
 import subprocess
 
-class RepoModule(QWidget, Ui_repo_module_root, BaseModule):
+class RepoModule(Ui_repo_module_root, BaseModule):
    
     def __init__(self, controller:Controller):
         super().__init__()

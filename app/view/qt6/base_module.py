@@ -1,4 +1,5 @@
+from PySide6.QtWidgets import QWidget
 
-class BaseModule():
+class BaseModule(QWidget):
 
     name:str = ""

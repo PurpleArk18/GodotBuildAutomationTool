@@ -3,10 +3,10 @@ import webbrowser
 from controller.controller import Controller
 from view.qt6.modules.compiled.gitModule_ui import Ui_git_module_root
 from view.qt6.base_module import BaseModule
-from PySide6.QtWidgets import QWidget
 
 
-class GitModule(QWidget, Ui_git_module_root, BaseModule):
+
+class GitModule(Ui_git_module_root, BaseModule):
    
     def __init__(self, controller:Controller):
         super().__init__()

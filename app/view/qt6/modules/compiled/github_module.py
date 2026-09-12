@@ -2,10 +2,9 @@ from controller.controller import Controller
 from view.qt6.modules.compiled.githubModule_ui import Ui_github_module_root
 from view.qt6.base_module import BaseModule
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QWidget
 import subprocess
 
-class GithubModule(QWidget, Ui_github_module_root, BaseModule):
+class GithubModule(Ui_github_module_root, BaseModule):
    
     def __init__(self, controller:Controller):
         super().__init__()

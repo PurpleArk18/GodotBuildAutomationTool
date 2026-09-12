@@ -9,6 +9,9 @@ class Helper:
 
     currentProcess = None
 
+    def show_message_dialog(self, parent:QWidget, message:str, title:str = "") -> None:
+        QMessageBox.information(parent, title, message)
+
     def launch(self):
         self.args["frontend"] = self.window.frontendComboBox.currentText()
         self.currentProcess = subprocess.Popen([sys.executable, "app/main.py"])
