@@ -8,9 +8,7 @@ import subprocess
 class BuildModule(Ui_build_module_root, BaseModule):
 
     def __init__(self, controller:Controller):
-        super().__init__()
-        self.setupUi(self)
-        self.controller = controller
+        super().__init__(controller)
         self.name = "Build"
         self.check_scons_button.clicked.connect(self.check_scons)
         self.install_scons_button.clicked.connect(self.install_scons)
@@ -18,7 +16,7 @@ class BuildModule(Ui_build_module_root, BaseModule):
         self.build_button.clicked.connect(self.build)
 
     def check_scons(self):
-        scons_status = subprocess.run(["scons", "--version"])
+        scons_status = subprocess.run(["scons", "-v"])
         bSconsConfigured = scons_status.returncode == 0
         message = "Scons is installed" if bGithubConfigured else "Scons not installed"
         self.controller.show_message_dialog(self, message, "Scons status")

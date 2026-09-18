@@ -7,9 +7,7 @@ import subprocess
 class RepoModule(Ui_repo_module_root, BaseModule):
    
     def __init__(self, controller:Controller):
-        super().__init__()
-        self.setupUi(self)
-        self.controller = controller
+        super().__init__(controller)
         self.check_branches_button.clicked.connect(self.set_branch_options)
         self.select_branch_comboBox.currentTextChanged.connect(self.branch_selected)
         self.select_repo_path_button.clicked.connect(self.select_repo_path)

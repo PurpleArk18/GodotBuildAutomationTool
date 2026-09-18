@@ -18,6 +18,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.controller = controller
         controller.statusBar = self.statusbar
+        controller.toolBar = self.toolBar
+
 
         self.git_module = GitModule(controller)
         self.modules.append(self.git_module)

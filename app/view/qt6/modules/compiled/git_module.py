@@ -9,9 +9,7 @@ from view.qt6.base_module import BaseModule
 class GitModule(Ui_git_module_root, BaseModule):
    
     def __init__(self, controller:Controller):
-        super().__init__()
-        self.setupUi(self)
-        self.controller = controller
+        super().__init__(controller)
         self.configure_git_button.clicked.connect(self.configure_git)
         self.checkGitButton.clicked.connect(self.check_git)
         self.debugCheckBox.toggled.connect(self.set_debug)
@@ -39,7 +37,7 @@ class GitModule(Ui_git_module_root, BaseModule):
        
         if (not bGitConfigured):
             webbrowser.open_new_tab("https://git-scm.com/install/")
-        self.controller.show_status_message(message)
+        self.controller.show_message_dialog(self, message, "Git status")
       
     def set_debug(self, debug:bool) -> None:
         self.controller.set_debug(debug)

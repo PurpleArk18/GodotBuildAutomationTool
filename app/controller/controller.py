@@ -1,13 +1,13 @@
 from dataclasses import asdict
 from model.model import Model
-from PySide6.QtWidgets import QStatusBar, QMessageBox, QWidget
+from PySide6.QtWidgets import QStatusBar, QMessageBox, QWidget, QToolBar
 import json
 
 class Controller:
 
     model:Model = Model()
     statusBar:QStatusBar
-    
+    toolbar:QToolBar
     
     def save(self) -> None:
         with open("prefs.json", "w", encoding="utf-8") as file:
@@ -21,8 +21,11 @@ class Controller:
     def show_status_message(self, message:str) -> None:
         self.statusBar.showMessage(message)
 
-    def show_message_dialog(self, parent:QWidget, message:str, title:str = "") -> None:
+    def show_message_dialog(self, parent:QWidget, title:str, message:str) -> None:
         QMessageBox.information(parent, title, message)
+
+    def show_question_dialog(self, parent:QWidget, title:str, message:str) -> QMessageBox.StandardButton:
+        return QMessageBox.question(parent, title, message)
 
     def set_git_configured(self, isConfigured:bool) -> None:
         self.model.set_git_configured(isConfigured)

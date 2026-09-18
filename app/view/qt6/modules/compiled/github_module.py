@@ -7,9 +7,7 @@ import subprocess
 class GithubModule(Ui_github_module_root, BaseModule):
    
     def __init__(self, controller:Controller):
-        super().__init__()
-        self.setupUi(self)
-        self.controller = controller
+        super().__init__(controller)
         self.check_github_cli_button.clicked.connect(self.check_github)
         self.install_github_cli_button.clicked.connect(self.install_github)
         self.use_github_checkbox.stateChanged.connect(self.use_github_state_changed)
@@ -19,7 +17,7 @@ class GithubModule(Ui_github_module_root, BaseModule):
         github_status = subprocess.run(["gh", "--version"])
         bGithubConfigured = github_status.returncode == 0
         message = "Github CLI is installed" if bGithubConfigured else "GitHub CLI not installed"
-        self.controller.show_status_message(message)
+        self.controller.show_message_dialog(self, message, "Github CLI status")
         self.install_github_cli_button.setEnabled(bGithubConfigured)
 
     def install_github(self) -> None:
