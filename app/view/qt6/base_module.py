@@ -13,5 +13,10 @@ class BaseModule(QWidget):
     def show_message_dialog(self, message:str, title:str = "Title") -> None:
         self.controller.show_message_dialog(self, message, title)
 
-    def show_question_dialog(self, message:str, title:str = "Title") -> QMessageBox.StandardButton:
+    def show_question_dialog(self, message:str, title:str = "Question") -> QMessageBox.StandardButton:
         return self.controller.show_question_dialog(self, title, message)
+        
+    def show_warning_dialog(self, message:str, title:str = "Warning") -> QMessageBox.StandardButton:
+        return self.controller.show_warning_dialog(self, title, message)
+
+

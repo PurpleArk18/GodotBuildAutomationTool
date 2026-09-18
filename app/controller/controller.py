@@ -26,6 +26,9 @@ class Controller:
 
     def show_question_dialog(self, parent:QWidget, title:str, message:str) -> QMessageBox.StandardButton:
         return QMessageBox.question(parent, title, message)
+        
+    def show_warning_dialog(self, parent:QWidget, title:str, message:str) -> QMessageBox.StandardButton:
+        return QMessageBox.warning(parent, title, message)
 
     def set_git_configured(self, isConfigured:bool) -> None:
         self.model.set_git_configured(isConfigured)
