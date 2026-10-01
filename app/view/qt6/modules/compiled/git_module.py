@@ -1,4 +1,3 @@
-import subprocess
 import webbrowser
 from controller.controller import Controller
 from view.qt6.modules.compiled.gitModule_ui import Ui_git_module_root
@@ -20,8 +19,8 @@ class GitModule(Ui_git_module_root, BaseModule):
         userName = self.user_name_line_edit.text()
         if (userEmail != "" and userName != "" ):
             if not self.controller.get_is_debug():
-                subprocess.run(["git", "config", "user.name", userName])
-                subprocess.run(["git", "config", "user.email", userEmail])
+                self.controller.run(self, ["git", "config", "user.name", userName])
+                self.controller.run(self, ["git", "config", "user.email", userEmail])
                 self.controller.set_user_name(userName)
                 self.controller.set_email(userEmail)
             self.controller.show_status_message("Configured user name and email")
@@ -29,15 +28,21 @@ class GitModule(Ui_git_module_root, BaseModule):
             self.controller.show_status_message("Incomplete data")
         
     def check_git(self):
-        git_status = subprocess.run(["git", "--version"])
-        bGitConfigured = git_status.returncode == 0
+        git_status = self.controller.run(self, ["git", "--version"])
+        bGitConfigured = git_status is not None and git_status.returncode == 0
         self.controller.set_git_configured(bGitConfigured)
         self.set_git_configure_elements_state(bGitConfigured)
-        message = "git is installed" if bGitConfigured else "git not installed"
+        message = "Git is installed" if bGitConfigured else "git not installed, would you like to install it now?"
        
         if (not bGitConfigured):
-            webbrowser.open_new_tab("https://git-scm.com/install/")
-        self.controller.show_message_dialog(self, message, "Git status")
+            buttons = StandardButton.Ok | StandardButton.Cancel
+            button = self.controller.show_message_dialog(self, "Git status", message, buttons)
+            if (button == QMessageBox.StandardButton.Ok):
+                webbrowser.open_new_tab("https://git-scm.com/install/")
+        else:
+            self.controller.show_message_dialog(self, "Git status", message)
+
+        
       
     def set_debug(self, debug:bool) -> None:
         self.controller.set_debug(debug)

@@ -2,6 +2,7 @@ from dataclasses import asdict
 from model.model import Model
 from PySide6.QtWidgets import QStatusBar, QMessageBox, QWidget, QToolBar
 import json
+import subprocess
 
 class Controller:
 
@@ -18,16 +19,30 @@ class Controller:
             data = json.load(file)
             self.model = Model(**data)
 
+    def run(self, parent:QWidget, args:list[str], bcapture_output:bool = False, btext:bool = False, bcheck:bool = False) -> CompletedProcess[bytes] | None:
+        try:
+            result = subprocess.run(args, capture_output=bcapture_output, text=btext, check=bcheck)
+            print(result.stdout)
+            return result
+        except subprocess.CalledProcessError as e:
+            process = args[0]
+            self.show_message_dialog(parent, "error", f"{process} failed with exit code {e.returncode}: {e.stderr}")
+           
+        except FileNotFoundError:
+            process = args[0] 
+            self.show_message_dialog(parent, "error", f"{process} is not installed or not found in your system PATH.")
+        return None
+
     def show_status_message(self, message:str) -> None:
-        self.statusBar.showMessage(message)
+        return self.statusBar.showMessage(message)
 
-    def show_message_dialog(self, parent:QWidget, title:str, message:str) -> None:
-        QMessageBox.information(parent, title, message)
+    def show_message_dialog(self, parent:QWidget, title:str, message:str, buttons:QMessageBox.StandardButton = QMessageBox.StandardButton.Ok) -> None:
+        return QMessageBox.information(parent, title, message, buttons)
 
-    def show_question_dialog(self, parent:QWidget, title:str, message:str) -> QMessageBox.StandardButton:
+    def show_question_dialog(self, parent:QWidget, title:str, message:str, buttons:QMessageBox.StandardButton = QMessageBox.StandardButton.Ok) -> QMessageBox.StandardButton:
         return QMessageBox.question(parent, title, message)
         
-    def show_warning_dialog(self, parent:QWidget, title:str, message:str) -> QMessageBox.StandardButton:
+    def show_warning_dialog(self, parent:QWidget, title:str, message:str, buttons:QMessageBox.StandardButton = QMessageBox.StandardButton.Ok) -> QMessageBox.StandardButton:
         return QMessageBox.warning(parent, title, message)
 
     def set_git_configured(self, isConfigured:bool) -> None:

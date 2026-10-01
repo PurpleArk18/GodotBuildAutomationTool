@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import QWidget, QMessageBox
 from controller.controller import Controller
 
+
 class BaseModule(QWidget):
 
     name:str = ""
@@ -10,13 +11,13 @@ class BaseModule(QWidget):
         self.setupUi(self)
         self.controller = controller
 
-    def show_message_dialog(self, message:str, title:str = "Title") -> None:
+    def show_message_dialog(self, message:str, title:str = "Title") -> Button:
         self.controller.show_message_dialog(self, message, title)
 
-    def show_question_dialog(self, message:str, title:str = "Question") -> QMessageBox.StandardButton:
+    def show_question_dialog(self, message:str, title:str = "Question") -> Button:
         return self.controller.show_question_dialog(self, title, message)
         
-    def show_warning_dialog(self, message:str, title:str = "Warning") -> QMessageBox.StandardButton:
+    def show_warning_dialog(self, message:str, title:str = "Warning") -> Button:
         return self.controller.show_warning_dialog(self, title, message)
 
 

@@ -1,6 +1,5 @@
 from pathlib import Path
 from enum import Enum
-import subprocess
 
 SCRIPT_PATH = Path(__file__).resolve().parent
 

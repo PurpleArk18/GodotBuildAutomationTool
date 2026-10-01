@@ -2,7 +2,6 @@ from controller.controller import Controller
 from view.qt6.modules.compiled.repoModule_ui import Ui_repo_module_root
 from view.qt6.base_module import BaseModule
 from PySide6.QtWidgets import QFileDialog
-import subprocess
 
 class RepoModule(Ui_repo_module_root, BaseModule):
    
@@ -14,7 +13,7 @@ class RepoModule(Ui_repo_module_root, BaseModule):
         self.name = "Repo"
 
     def get_branches(self) -> list[str]:
-        result = subprocess.run(["git", "branch", "-r"], capture_output=True, text=True)
+        result = self.controller.run(["git", "branch", "-r"], capture_output=True, text=True)
         branches = result.stdout
         print(branches)
         return branches.split("\n")
@@ -28,7 +27,7 @@ class RepoModule(Ui_repo_module_root, BaseModule):
 
     def fork_godot(self) -> None:
         if not self.controller.get_is_debug():
-            subprocess.run(["gh", "repo", "fork", "https://github.com/godotengine/godot", "--clone=True", "--remote=True"])
+            self.controller.run(["gh", "repo", "fork", "https://github.com/godotengine/godot", "--clone=True", "--remote=True"])
 
     def select_repo_path(self) -> None:
         path = QFileDialog.getExistingDirectory(self, caption="Select Repo Location", dir="", options = QFileDialog.ShowDirsOnly)

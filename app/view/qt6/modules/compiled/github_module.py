@@ -2,7 +2,6 @@ from controller.controller import Controller
 from view.qt6.modules.compiled.githubModule_ui import Ui_github_module_root
 from view.qt6.base_module import BaseModule
 from PySide6.QtCore import Qt
-import subprocess
 
 class GithubModule(Ui_github_module_root, BaseModule):
    
@@ -14,18 +13,18 @@ class GithubModule(Ui_github_module_root, BaseModule):
         self.name = "Github"
 
     def check_github(self) -> None:
-        github_status = subprocess.run(["gh", "--version"])
+        github_status = self.controller.run(self, ["gh", "--version"])
         bGithubConfigured = github_status.returncode == 0
         message = "Github CLI is installed" if bGithubConfigured else "GitHub CLI not installed"
-        self.controller.show_message_dialog(self, message, "Github CLI status")
+        self.controller.show_message_dialog(self, "Github CLI status", message)
         self.install_github_cli_button.setEnabled(bGithubConfigured)
 
     def install_github(self) -> None:
         if not self.controller.get_is_debug():
-            subprocess.run(["winget", "install", "--id", "GitHub.cli", "--source", "winget"])
+            self.controller.run(self, ["winget", "install", "--id", "GitHub.cli", "--source", "winget"])
 
     def use_github_state_changed(self, newState:Qt.CheckState) -> None:
-        enabled = newState == Qt.CheckState.Checked
+        enabled:bool = newState == Qt.CheckState.Checked.value
         self.check_github_cli_button.setEnabled(enabled)
         self.install_github_cli_button.setEnabled(enabled)
 
