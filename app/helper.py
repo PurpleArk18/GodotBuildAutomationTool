@@ -53,7 +53,7 @@ class Helper:
         subprocess.run(["pyinstaller", "main.spec"])
 
     def open_spec(self):
-        subprocess.run(["notepad", "main.spec"])
+        subprocess.Popen(["notepad", "main.spec"])
 
     def launch_installforge(self):
         path = r"C:\Program Files (x86)\solicus\InstallForge\bin\ifbuilderenvx86.exe"

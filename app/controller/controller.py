@@ -1,6 +1,6 @@
 from dataclasses import asdict
 from model.model import Model
-from PySide6.QtWidgets import QStatusBar, QMessageBox, QWidget, QToolBar
+from PySide6.QtWidgets import QStatusBar, QMessageBox, QWidget, QToolBar, QFileDialog
 import json
 import subprocess
 
@@ -19,7 +19,7 @@ class Controller:
             data = json.load(file)
             self.model = Model(**data)
 
-    def run(self, parent:QWidget, args:list[str], bcapture_output:bool = False, btext:bool = False, bcheck:bool = False) -> CompletedProcess[bytes] | None:
+    def run(self, args:list[str], parent:QWidget, bcapture_output:bool = False, btext:bool = False, bcheck:bool = False) -> CompletedProcess[bytes] | None:
         try:
             result = subprocess.run(args, capture_output=bcapture_output, text=btext, check=bcheck)
             print(result.stdout)
@@ -44,6 +44,9 @@ class Controller:
         
     def show_warning_dialog(self, parent:QWidget, title:str, message:str, buttons:QMessageBox.StandardButton = QMessageBox.StandardButton.Ok) -> QMessageBox.StandardButton:
         return QMessageBox.warning(parent, title, message)
+
+    def show_file_dialog(self, parent:QWidget, caption:str, dir:str, options:QFileDialog.Option) -> str:
+        return QFileDialog.getExistingDirectory(parent, caption, dir, options)
 
     def set_git_configured(self, isConfigured:bool) -> None:
         self.model.set_git_configured(isConfigured)
@@ -78,5 +81,7 @@ class Controller:
     def get_repo_path(self) -> str:
         return self.model.get_repo_path()
 
-    def set_repo_path(self, newPath:str) -> None:
-        self.model.set_repo_path(newPath)
+    def set_repo_path(self) -> None:
+        newPath = show_file_dialog(self, "Select Repo Location", "", QFileDialog.ShowDirsOnly)
+        if not self.get_is_debug():
+            self.model.set_repo_path(newPath)

@@ -13,7 +13,7 @@ class GithubModule(Ui_github_module_root, BaseModule):
         self.name = "Github"
 
     def check_github(self) -> None:
-        github_status = self.controller.run(self, ["gh", "--version"])
+        github_status = self.controller.run(["gh", "--version"], self)
         bGithubConfigured = github_status.returncode == 0
         message = "Github CLI is installed" if bGithubConfigured else "GitHub CLI not installed"
         self.controller.show_message_dialog(self, "Github CLI status", message)
@@ -21,7 +21,7 @@ class GithubModule(Ui_github_module_root, BaseModule):
 
     def install_github(self) -> None:
         if not self.controller.get_is_debug():
-            self.controller.run(self, ["winget", "install", "--id", "GitHub.cli", "--source", "winget"])
+            self.controller.run(["winget", "install", "--id", "GitHub.cli", "--source", "winget"], self)
 
     def use_github_state_changed(self, newState:Qt.CheckState) -> None:
         enabled:bool = newState == Qt.CheckState.Checked.value

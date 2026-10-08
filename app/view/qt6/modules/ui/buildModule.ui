@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>606</width>
+    <height>284</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,6 +34,185 @@
       <string>Update Scons</string>
      </property>
     </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Command Line Options</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="1">
+      <layout class="QFormLayout" name="formLayout_4">
+       <item row="0" column="0">
+        <widget class="QLabel" name="optimization_level_label">
+         <property name="text">
+          <string>Optimization Level</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="optimization_level_comboBox">
+         <item>
+          <property name="text">
+           <string>speed_trace</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>speed</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>size</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>size_extra</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>debug</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>none</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="threads_label">
+         <property name="text">
+          <string>Threads</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSpinBox" name="threads_spinBox">
+         <property name="buttonSymbols">
+          <enum>QAbstractSpinBox::ButtonSymbols::PlusMinus</enum>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="1">
+      <widget class="QCheckBox" name="debug_symbols_checkBox">
+       <property name="text">
+        <string>Debug Symbols</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <layout class="QFormLayout" name="formLayout_3">
+       <item row="0" column="0">
+        <widget class="QLabel" name="target_label">
+         <property name="text">
+          <string>Target</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="target_comboBox">
+         <property name="currentText">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>target</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>editor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>template_debug</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>template_release</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="1">
+      <widget class="QCheckBox" name="dev_build_checkBox">
+       <property name="text">
+        <string>Dev Build</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="platformLabel">
+         <property name="text">
+          <string>Platform</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="platform_comboBox">
+         <item>
+          <property name="text">
+           <string>windows</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>ios</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>linuxbsd</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>macos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>android</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>web</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QPushButton" name="build_button">

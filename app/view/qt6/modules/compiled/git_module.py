@@ -19,8 +19,8 @@ class GitModule(Ui_git_module_root, BaseModule):
         userName = self.user_name_line_edit.text()
         if (userEmail != "" and userName != "" ):
             if not self.controller.get_is_debug():
-                self.controller.run(self, ["git", "config", "user.name", userName])
-                self.controller.run(self, ["git", "config", "user.email", userEmail])
+                self.controller.run(["git", "config", "user.name", userName], self)
+                self.controller.run(["git", "config", "user.email", userEmail], self)
                 self.controller.set_user_name(userName)
                 self.controller.set_email(userEmail)
             self.controller.show_status_message("Configured user name and email")
@@ -28,7 +28,7 @@ class GitModule(Ui_git_module_root, BaseModule):
             self.controller.show_status_message("Incomplete data")
         
     def check_git(self):
-        git_status = self.controller.run(self, ["git", "--version"])
+        git_status = self.controller.run(["git", "--version"], self)
         bGitConfigured = git_status is not None and git_status.returncode == 0
         self.controller.set_git_configured(bGitConfigured)
         self.set_git_configure_elements_state(bGitConfigured)

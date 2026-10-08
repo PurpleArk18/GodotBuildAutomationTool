@@ -13,7 +13,7 @@ class RepoModule(Ui_repo_module_root, BaseModule):
         self.name = "Repo"
 
     def get_branches(self) -> list[str]:
-        result = self.controller.run(["git", "branch", "-r"], capture_output=True, text=True)
+        result = self.controller.run(["git", "branch", "-r"], self, bcapture_output=True, btext=True)
         branches = result.stdout
         print(branches)
         return branches.split("\n")
@@ -27,10 +27,7 @@ class RepoModule(Ui_repo_module_root, BaseModule):
 
     def fork_godot(self) -> None:
         if not self.controller.get_is_debug():
-            self.controller.run(["gh", "repo", "fork", "https://github.com/godotengine/godot", "--clone=True", "--remote=True"])
+            self.controller.run(["gh", "repo", "fork", "https://github.com/godotengine/godot", "--clone=True", "--remote=True"], self)
 
     def select_repo_path(self) -> None:
-        path = QFileDialog.getExistingDirectory(self, caption="Select Repo Location", dir="", options = QFileDialog.ShowDirsOnly)
-        print(path)
-        if path != "" and not self.controller.get_is_debug():
-            self.controller.set_repo_path(path)
+       self.controller.set_repo_path(path)
