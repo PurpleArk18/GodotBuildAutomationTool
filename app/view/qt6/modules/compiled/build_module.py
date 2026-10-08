@@ -35,7 +35,7 @@ class BuildModule(Ui_build_module_root, BaseModule):
         self.controller.run(["python", "-m", "pip", "install", "--upgrade scons"], self)
 
     def build(self):
-        self.controller.run(["scons"])
+        self.controller.run(self.build_args)
 
     def get_build_platforms(self):
         text = self.controller.run(["scons", "platform=list"], self, True, True)
@@ -43,24 +43,27 @@ class BuildModule(Ui_build_module_root, BaseModule):
             self.controller.show_message_dialog(self, "", text.stdout)
 
     def platform_changed(self, text:str) -> None:
-        pass
+        arg = "platform={}".format(text)
+        self.build_args.append(arg)
+    
 
     def threads_changed(self, index:int) -> None:
-        pass
+        arg = "-j{}".format(index)
+        self.build_args.append(arg)
 
     def target_changed(self, text:str) -> None:
-        pass
+        arg = "target={}".format(text)
+        self.build_args.append(arg)
 
     def optimization_level_changed(self, text:str) -> None:
         pass
 
     def dev_build_toggled(self, checked:bool) -> None:
-        pass
+        value = if checked then "yes" else "no"
+        arg = "dev_build={}".format(value)
+        self.build_args.append(arg)
 
     def debug_symbols_toggled(self, checked:bool) -> None:
-        pass
-
-
-
-
-        
+        value = if checked then "yes" else "no"
+        arg = "debug_symbols={}".format(value)
+        self.build_args.append(arg)
