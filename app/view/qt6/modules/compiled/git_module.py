@@ -1,4 +1,5 @@
 import webbrowser
+from PySide6.QtCore import Qt
 from controller.controller import Controller
 from view.qt6.modules.compiled.gitModule_ui import Ui_git_module_root
 from view.qt6.base_module import BaseModule
@@ -11,7 +12,7 @@ class GitModule(Ui_git_module_root, BaseModule):
         super().__init__(controller)
         self.configure_git_button.clicked.connect(self.configure_git)
         self.checkGitButton.clicked.connect(self.check_git)
-        self.debugCheckBox.toggled.connect(self.set_debug)
+        self.debugCheckBox.stateChanged.connect(self.set_debug)
         self.name = "Git"
 
     def configure_git(self):
@@ -42,9 +43,8 @@ class GitModule(Ui_git_module_root, BaseModule):
         else:
             self.controller.show_message_dialog(self, "Git status", message)
 
-        
-      
-    def set_debug(self, debug:bool) -> None:
+    def set_debug(self, state:Qt.CheckState) -> None:
+        debug = Qt.CheckState(state) == Qt.CheckState.Checked
         self.controller.set_debug(debug)
         self.controller.show_status_message(f"Debug set to {debug}")
 

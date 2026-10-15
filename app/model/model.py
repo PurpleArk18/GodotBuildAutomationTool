@@ -5,7 +5,7 @@ from dataclasses import dataclass
 @dataclass
 class Model:
 
-    _debug:bool = False
+    _debug:bool = True
     _userName:str = ""
     _email:str = ""
     _git_is_configured = False

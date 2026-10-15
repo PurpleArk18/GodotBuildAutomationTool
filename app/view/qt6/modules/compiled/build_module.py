@@ -2,10 +2,11 @@ from controller.controller import Controller
 from view.qt6.modules.compiled.buildModule_ui import Ui_build_module_root
 from view.qt6.base_module import BaseModule
 from PySide6.QtWidgets import QWidget
+from PySide6.QtCore import Qt
 
 class BuildModule(Ui_build_module_root, BaseModule):
 
-    build_args:list[str] = ["scons"]
+    build_args:dict[str,str] = {"base": "scons"}
 
     def __init__(self, controller:Controller):
         super().__init__(controller)
@@ -14,12 +15,12 @@ class BuildModule(Ui_build_module_root, BaseModule):
         self.install_scons_button.clicked.connect(self.install_scons)
         self.update_scons_button.clicked.connect(self.update_scons)
         self.build_button.clicked.connect(self.build)
-        self.platform_combo_box.currentTextChanged.connect(self.platform_changed)
-        self.threads_combo_box.currentIndexChanged.connect(self.threads_changed)
-        self.target_combo_box.currentTextChanged.connect(self.target_changed)
-        self.optimization_level_combo_box.currentTextChanged.connect(self.optimization_level_changed)
-        self.dev_build_check_box.toggled.connect(self.dev_build_toggled)
-        self.debug_symbols_check_box.toggled.connect(self.debug_symbols_toggled))
+        self.platform_comboBox.currentTextChanged.connect(self.platform_changed)
+        self.threads_spinBox.valueChanged.connect(self.threads_changed)
+        self.target_comboBox.currentTextChanged.connect(self.target_changed)
+        self.optimization_level_comboBox.currentTextChanged.connect(self.optimization_level_changed)
+        self.dev_build_checkBox.stateChanged.connect(self.dev_build_toggled)
+        self.debug_symbols_checkBox.stateChanged.connect(self.debug_symbols_toggled)
 
     def check_scons(self):
         scons_status = self.controller.run(["scons", "-v"], self, True, True, True)
@@ -35,7 +36,10 @@ class BuildModule(Ui_build_module_root, BaseModule):
         self.controller.run(["python", "-m", "pip", "install", "--upgrade scons"], self)
 
     def build(self):
-        self.controller.run(self.build_args)
+        if self.controller.get_is_debug():
+            self.controller.show_message_dialog(self, "Debug build", " ".join(self.build_args.values()))
+            return
+        self.controller.run([arg for arg in self.build_args.values()], self)
 
     def get_build_platforms(self):
         text = self.controller.run(["scons", "platform=list"], self, True, True)
@@ -43,27 +47,32 @@ class BuildModule(Ui_build_module_root, BaseModule):
             self.controller.show_message_dialog(self, "", text.stdout)
 
     def platform_changed(self, text:str) -> None:
-        arg = "platform={}".format(text)
-        self.build_args.append(arg)
-    
+        key = "platform"
+        self.set_build_arg(key, text)
 
     def threads_changed(self, index:int) -> None:
+        key = "threads"
         arg = "-j{}".format(index)
-        self.build_args.append(arg)
+        self.build_args[key] = arg
 
     def target_changed(self, text:str) -> None:
-        arg = "target={}".format(text)
-        self.build_args.append(arg)
+        key = "target"
+        self.set_build_arg(key, text)
 
     def optimization_level_changed(self, text:str) -> None:
         pass
 
-    def dev_build_toggled(self, checked:bool) -> None:
-        value = if checked then "yes" else "no"
-        arg = "dev_build={}".format(value)
-        self.build_args.append(arg)
+    def dev_build_toggled(self, checked:Qt.CheckState) -> None:
+        key = "dev_build"
+        value = "yes" if Qt.CheckState(checked) == Qt.CheckState.Checked else "no"
+        self.set_build_arg(key, value)
 
-    def debug_symbols_toggled(self, checked:bool) -> None:
-        value = if checked then "yes" else "no"
-        arg = "debug_symbols={}".format(value)
-        self.build_args.append(arg)
+    def debug_symbols_toggled(self, checked:Qt.CheckState) -> None:
+        key = "debug_symbols"
+        value = "yes" if Qt.CheckState(checked) == Qt.CheckState.Checked else "no"
+        self.set_build_arg(key, value)
+
+    def set_build_arg(self, key:str, value:str) -> None:
+        arg = "{}={}".format(key, value)
+        self.build_args[key] = arg
+        self.controller.show_status_message(f"Build argument set: {arg}")
